@@ -12,14 +12,14 @@ def request(flow: http.HTTPFlow):
 
 def response(flow: http.HTTPFlow):
     print(flow.request.pretty_url)
-    if flow.request.path == '/cloud/v2/deviceManaged/bypassV2':
+    if flow.request.path == 'xxxxx':
         request_data = flow.request.get_text()
         # print(request_data)
         method = json.loads(request_data)['payload']['method']
-        if method == 'getHumidifierStatus1':
+        if method == 'xxx':
             print("拦截到了请求，函数是"+ method)
             response_data = json.loads(flow.response.get_text())
-            response_data['result']['result']['humidity'] = 98
+            response_data['xx']['xx']['xx'] = 98
             flow.response.set_text(json.dumps(response_data))
         else:
             pass
